@@ -1,8 +1,8 @@
+
+<?php
 // Riscrivere questa pagina del sito google	https://policies.google.com/faq.
 // Ci sono diverse domande con relative risposte. Gestire il “Database” e la visualizzazione di queste domande e risposte con PHP
 // DATABASE CONTENENTE DOMANDA E RISPOSTA(UNO O + PARAGRAFI)
-
-<?php
 $db = [
     [
 
@@ -115,3 +115,84 @@ $db = [
     ],
 ];
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Google-faq</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="logo-container">
+                <a href="#" class="privacy-link">Privacy e termini</a>
+            </div>
+            <div class="btn-container">
+                <div class="collapse-icon">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+                <button>Accedi</button>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <ul>
+                <li><a href='#'>Introduzione</a></li>
+                <li><a href='#'>Norme sulla privacy</a></li>
+                <li><a href='#'>Termini di servizio</a></li>
+                <li><a href='#'>Tecnologie</a></li>
+                <li class="active"><a href='#'>Domande frequenti</a></li>
+            </ul>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <?php 
+            foreach ($db as $faq) {
+                echo '<section>';
+                echo '<h2>' . $faq['question'] . '</h2>';
+                echo $faq['answer'];
+                if(isset($faq['subContainer'])) {
+                    echo ($faq['subContainer']);
+                }
+                echo '</section>';
+            }
+            ?>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="#">Google</a>
+                </li>
+                <li>
+                    <a href="#">Tutto su Google</a>
+                </li>
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+                <li>
+                    <a href="#">Termini</a>
+                </li>
+            </ul>
+            <div class="language-container">
+                <select name="select-language" id="select-language">
+                    <option value=""></option>
+                    <option value="Italiano">Italiano</option>
+                    <option value="english">English</option>
+                    <option value="French">French</option>
+                </select>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
